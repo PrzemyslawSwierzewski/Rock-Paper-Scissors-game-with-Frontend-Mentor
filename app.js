@@ -20,13 +20,17 @@ const renderScore=()=>{
 
 const bindPickEvents = () => {
   document.querySelectorAll(".options button").forEach((button) =>{
-    button.addEventListener("click",(e)=>{
-      pickByPlayer(e.currentTarget.dataset.pick);
-      pickByAI();
+    button.addEventListener("click",pick);
       
-      console.log(state);
-    });
+    
   });
+};
+
+const pick = (e) => {
+  pickByPlayer(e.currentTarget.dataset.pick);
+  pickByAI();
+  hideOptions();
+  showFight();
 };
 
 const pickByPlayer = (pickedOption) =>{
@@ -44,7 +48,51 @@ const pickByAI= () => {
       ...state,
       AIPick,
   }
-}
+};
+
+const hideOptions = () => {
+  document.querySelector(".options").classList.add("hidden");
+};
+
+const showFight = () => {
+  document.querySelector(".fight").classList.remove("hidden");
+  createElementPickedByPlayer();
+  createElementPickedByAI();
+};
+
+const createElementPickedByPlayer = () => {
+  const playerPick = state.playerPick;
+  const pickContainerElement = document.querySelector(".pick__container--player");
+
+  pickContainerElement.innerHTML = "";
+  pickContainerElement.appendChild(createPickElement(playerPick));
+};
+
+const createElementPickedByAI= () => {
+  const AIPick = state.AIPick;
+  const pickContainerElement = document.querySelector(".pick__container--ai");
+
+  pickContainerElement.innerHTML = "";
+  pickContainerElement.appendChild(createPickElement(AIPick));
+};
+
+const createPickElement = (option) => {
+  const pickElement = document.createElement("div");
+  pickElement.classList.add("button", `button--${option}`);
+
+  const imageContainerElement = document.createElement("div");
+  imageContainerElement.classList.add("button__images-container");
+  
+  const imgElement = document.createElement("img");
+  imgElement.src = `./images/icon-${option}.svg`;
+  imgElement.alt = option;
+
+  imageContainerElement.appendChild(imgElement);
+
+  pickElement.appendChild(imageContainerElement);
+
+  return pickElement;
+};
 
 const init=()=>{
   renderScore();
