@@ -134,6 +134,7 @@ main{
   transform: translate(200%,-50%);
   opacity: 0;
   width: 100%;
+  align-items: center;
 }
 .fight.slide-left{
   opacity: 1;
@@ -145,6 +146,9 @@ main{
   justify-content: center;
   flex-wrap: wrap;
   align-items: flex-start;
+  position: relative;
+  transform: translate(0,0);
+  transition: transform 0.3s;
 }
 
 .pick__title{
@@ -152,6 +156,11 @@ main{
   padding-bottom: 36px;
   text-align: center;
   width: 100%;
+  transform: translate(-50%, 0);
+  position: absolute;
+  left: 50%;
+  bottom: 100%;
+  
 }
 .pick__placeholder{
   width: 50%;
@@ -162,10 +171,7 @@ main{
 .hidden{
   display: none;
 }
-.pick__container--player,
-.pick__container--ai {
-  width: 75%;
-}
+
 section{
   position: absolute;
   top:50%;
@@ -176,4 +182,68 @@ section{
 .options.slide-left{
   transform: translate(-200%, -50%);
   opacity: 0;
+}
+.result__button{
+  background: color(--color-main);
+  border: none;
+  padding: 8px 24px;
+  color: hsl(349, 71%, 52%);
+  
+  border-radius: 3px;
+}
+.result__text{
+  font-size: 32px;
+  text-align: center;
+  width: 100%;
+  font-weight: 700;
+}
+.result{
+  display: flex;
+  overflow: hidden;
+  justify-content: center;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  flex-wrap: wrap;
+  transform: scaleX(0) translate(-50%,-50%);
+  transition: transform 0.3s;
+}
+.result.shown{
+  transform: scaleX(1) translate(-50%,-50%);
+}
+.pick--ai.moved{
+  transform: translate(25%,0);
+}
+.pick--player.moved{
+  transform: translate(-25%,0);
+}
+.pick__container{
+  width: 75%;
+}
+@media screen and (max-width: 480px) {
+  .score{
+    padding: 8px 12px;
+  }
+  
+  .fight{
+    flex-wrap:wrap;
+  }
+  .pick.moved,
+  .pick,
+  .result{
+    position: relative;
+    left: 0;
+    right: 0;
+    transform: translate(0,0);
+    
+  }
+  .result{
+    width: 100%;
+    margin-top: 48px;
+    transform: translate(0,0) scaleX(0);
+  }
+
+  .result.shown{
+    transform: translate(0,0) scaleX(1);
+  }
 }

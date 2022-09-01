@@ -30,6 +30,7 @@ const bindPickEvents = () => {
       
     
   });
+  document.querySelector(".result__button").addEventListener("click",reset);
 };
 
 const pick = (e) => {
@@ -57,18 +58,14 @@ const pickByAI= () => {
 };
 
 const hideOptions = () => {
-  //document.querySelector(".options").classList.add("hidden");
+  
   const optionsElement= document.querySelector(".options");
-  setTimeout(()=> {
-    optionsElement.classList.add("hidden")
-  },300);
   optionsElement.classList.add("slide-left");
 };
 
 const showFight = () => {
   const fightElement=document.querySelector(".fight");
   fightElement.classList.add("slide-left");
-  fightElement.classList.remove("hidden");
   createElementPickedByPlayer();
   createElementPickedByAI();
   showResult();
@@ -78,24 +75,32 @@ const showFight = () => {
 
 const showResult= () =>{
   if(state.playerPick===state.AIPick){
-    console.log('draw');
+    document.querySelector(".result__text").innerHTML= "DRAW";
   }
   else if(winningResultsMap[state.playerPick].includes(state.AIPick)){
-    console.log('player wins');
+    document.querySelector(".result__text").innerHTML= "YOU WIN";
     localStorage.setItem(playerWinsLSKey, state.playerWins+1);
     state={
       ...state,
       playerWins: state.playerWins+1,
     }
   }else{
-    console.log('ai Wins');
+    document.querySelector(".result__text").innerHTML= "AI WIN";
     localStorage.setItem(playerWinsLSKey, state.AIWins+1);
     state={
       ...state,
       AIWins: state.AIWins+1,
     };
   }
+  setTimeout(renderResult,1000);
+
   renderScore();
+};
+
+const renderResult = () => {
+  document.querySelector(".result").classList.add("shown");
+  document.querySelector(".pick--player").classList.add('moved');
+  document.querySelector(".pick--ai").classList.add('moved');
 };
 
 const createElementPickedByPlayer = () => {
@@ -130,6 +135,14 @@ const createPickElement = (option) => {
   pickElement.appendChild(imageContainerElement);
 
   return pickElement;
+};
+
+const reset= () =>{
+  const fightElement=document.querySelector(".fight");
+  fightElement.classList.remove("slide-left");
+
+  const optionsElement= document.querySelector(".options");
+  optionsElement.classList.remove("slide-left");
 };
 
 const init=()=>{
