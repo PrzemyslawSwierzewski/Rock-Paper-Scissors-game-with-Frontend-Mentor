@@ -241,6 +241,7 @@ cursor: pointer;
 display: flex;
 justify-content: space-between;
 width: 100%;
+padding: 8px;
 }
 .rules_button{
   border: none;
@@ -256,7 +257,6 @@ width: 100%;
   margin: auto;
   position: relative;
   background-color: #fff;
-  display: none;
   justify-content: space-between;
   border-radius: 5px;
   width: 100%;
@@ -265,8 +265,9 @@ width: 100%;
   transition: transform 0.3s;
   
 }
+
 .r{
-  padding: 60px;
+  padding: 30px;
 }
 .rule{
   display: block;

@@ -78,22 +78,20 @@ const showRules= () =>{
   const rules = document.querySelector(".rules");
   const div = document.querySelector(".rules__containter");
   const rules_exit= document.querySelector('.rules_button');
-  div.classList.add("shown");
+
+
+  
+
+  show= () => {
+    div.style.display='block';
+  }
+  rules.onclick=show();
+  hide= () =>{
+    div.style.display='none';
+  }
+  rules_exit.addEventListener('click',hide);
  
- rules.addEventListener('click', ()=>{
-  if(div.style.display==='none'){
-    div.style.display= 'block';
-  }else{
-    div.style.display='none';
-  }
- }) 
- rules_exit.addEventListener('click', ()=>{
-  if(div.style.display==='block'){
-    div.style.display= 'none';
-  }else{
-    div.style.display='none';
-  }
- }) 
+
 
   
 };
