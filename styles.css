@@ -211,6 +211,9 @@ section{
 .result.shown{
   transform: scaleX(1) translate(-50%,-50%);
 }
+.rules__containter.shown{
+  
+}
 .pick--ai.moved{
   transform: translate(25%,0);
 }
@@ -219,6 +222,54 @@ section{
 }
 .pick__container{
   width: 75%;
+}
+.rules{
+left: 80%;
+border-radius: 5px;
+padding: 8px 32px;
+background: none;
+color: #fff;
+border: solid 0.5px #fff;
+position: relative;
+cursor: pointer;
+}
+.rules__Main{
+
+  
+}
+.rulesheader{
+display: flex;
+justify-content: space-between;
+width: 100%;
+}
+.rules_button{
+  border: none;
+  background: none;
+  color: var(--color-border);
+  font-size: x-large;
+  cursor: pointer;
+}
+.rules_img{
+  padding: 16px 32px;
+}
+.rules__containter{
+  margin: auto;
+  position: relative;
+  background-color: #fff;
+  display: none;
+  justify-content: space-between;
+  border-radius: 5px;
+  width: 100%;
+  padding: 8px 16px;
+  font-size: x-large;
+  transition: transform 0.3s;
+  
+}
+.r{
+  padding: 60px;
+}
+.rule{
+  display: block;
 }
 @media screen and (max-width: 480px) {
   .score{
@@ -245,5 +296,13 @@ section{
 
   .result.shown{
     transform: translate(0,0) scaleX(1);
+  }
+  .rules{
+    align-content: center;
+    left: 30%;
+    cursor: pointer;
+  }
+  .r{
+    padding: 30px;
   }
 }
