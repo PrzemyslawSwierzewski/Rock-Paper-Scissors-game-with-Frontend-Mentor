@@ -78,16 +78,19 @@ const showRules= () =>{
   const rules = document.querySelector(".rules");
   const div = document.querySelector(".rules__containter");
   const rules_exit= document.querySelector('.rules_button');
+  
 
 
   
 
   show= () => {
-    div.style.display='block';
+    
+    document.querySelector(".rules__containter").classList.add('hidden');
   }
   rules.onclick=show();
   hide= () =>{
-    div.style.display='none';
+    
+    document.querySelector(".rules__containter").classList.remove('hidden');
   }
   rules_exit.addEventListener('click',hide);
  

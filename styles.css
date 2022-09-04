@@ -254,17 +254,30 @@ padding: 8px;
 .rules_img{
   padding: 16px 32px;
 }
+.rules__containter.hidden{
+  opacity: 1;
+  display: block;
+  transform: translate(396px, -244px);
+  transition: transform 0.3s;
+  
+  
+}
+.rules_div{
+  transform: translate(-150%,0);
+}
 .rules__containter{
   margin: auto;
-  position: relative;
+  display: none;
+  /* position: relative; */
   background-color: #fff;
   justify-content: space-between;
   border-radius: 5px;
   width: 100%;
   padding: 8px 16px;
   font-size: x-large;
-  transition: transform 0.3s;
-  
+  opacity: 0;
+  transform: translate(-100%,100%);
+  display: block;
 }
 
 .r{
