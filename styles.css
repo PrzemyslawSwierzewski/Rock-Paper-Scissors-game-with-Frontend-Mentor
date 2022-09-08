@@ -22,6 +22,7 @@ body{
   padding: 48px;
   font-family: 'Barlow Semi Condensed', sans-serif;
   overflow: hidden;
+  overflow-y: hidden;
 }
 
 header{
@@ -319,5 +320,8 @@ padding: 8px;
   }
   .r{
     padding: 30px;
+  }
+  .body{
+    overflow: hidden;
   }
 }
